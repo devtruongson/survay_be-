@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "requesterId": 0,
+        "title": "",
+        "description": "",
+        "surveyTypeId": 0,
+        "surveyTopicId": 0,
+        "surveySpecificTopicId": 0,
+        "surveyStatusId": 0,
+        "securityModeId": 0,
+        "configJsonString": {
+            "backgroundGradient1Color": "#ffffff",
+            "backgroundGradient2Color": "#f0f0f0",
+            "titleColor": "#000000",
+            "contentColor": "#333333",
+            "buttonBackgroundColor": "#007bff",
+            "buttonContentColor": "#ffffff",
+            "password": ""
+        },
+        "questions": []
+    }
+]
