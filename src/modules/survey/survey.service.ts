@@ -11,6 +11,7 @@ export class SurveyService {
     async createSurvey(data: any) {
         await db.read();
         db.data.push(data);
+        await db.write();
 
         return sendResponse({
             data: db.data,
