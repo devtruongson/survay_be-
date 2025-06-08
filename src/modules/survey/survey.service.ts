@@ -32,16 +32,20 @@ export class SurveyService {
             await db.write();
 
             return sendResponse({
-                data: db.data,
+                data: data,
                 message: 'OK',
                 statusCode: HttpStatus.OK,
             });
         } else {
-            db.data.push(data);
+            const newData = {
+                ...data,
+                id: new Date().getTime(),
+            };
+            db.data.push(newData);
             await db.write();
 
             return sendResponse({
-                data: db.data,
+                data: newData,
                 message: 'OK',
                 statusCode: HttpStatus.OK,
             });
@@ -57,7 +61,7 @@ export class SurveyService {
                 statusCode: HttpStatus.OK,
             });
         }
-        const survey = db.data.find((s: any) => s.id === id);
+        const survey = db.data.find((s: any) => s.id == id);
         if (!survey) {
             return sendResponse({
                 data: null,
@@ -66,7 +70,7 @@ export class SurveyService {
             });
         }
         return sendResponse({
-            data: db.data,
+            data: survey,
             message: 'OK',
             statusCode: HttpStatus.OK,
         });
