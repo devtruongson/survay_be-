@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { sendResponse } from 'src/helpers/response';
-import { db, initDB } from 'src/utils/db';
+import { db, dbBackground, initDB } from 'src/utils/db';
 
 @Injectable()
 export class SurveyService {
@@ -8,22 +8,31 @@ export class SurveyService {
         await initDB();
     }
 
+    async getAllBackgrounds() {
+        await dbBackground.read();
+        return sendResponse({
+            data: dbBackground.data,
+            message: 'OK',
+            statusCode: HttpStatus.OK,
+        });
+    }
+
     async createSurvey(data: any) {
         await db.read();
 
-        const id = data.id;
-        if (!id) {
+        const Id = data.Id;
+        if (!Id) {
             return sendResponse({
                 data: null,
                 message: 'ID is required',
                 statusCode: HttpStatus.BAD_REQUEST,
             });
         }
-        const existingSurvey = db.data.find((s: any) => s.id === id);
+        const existingSurvey = db.data.find((s: any) => s.Id === Id);
 
         if (existingSurvey) {
             const newData = db.data.map((survey) => {
-                if ((survey as any).id === id) {
+                if ((survey as any).Id === Id) {
                     return data;
                 }
                 return survey;
@@ -39,7 +48,7 @@ export class SurveyService {
         } else {
             const newData = {
                 ...data,
-                id: new Date().getTime(),
+                Id: new Date().getTime(),
             };
             db.data.push(newData);
             await db.write();
@@ -52,16 +61,16 @@ export class SurveyService {
         }
     }
 
-    async getSurvey(id: string) {
+    async getSurvey(Id: string) {
         await db.read();
-        if (!id) {
+        if (!Id) {
             return sendResponse({
                 data: db.data,
                 message: 'OK',
                 statusCode: HttpStatus.OK,
             });
         }
-        const survey = db.data.find((s: any) => s.id == id);
+        const survey = db.data.find((s: any) => s.Id == Id);
         if (!survey) {
             return sendResponse({
                 data: null,

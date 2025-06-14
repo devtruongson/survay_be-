@@ -3,11 +3,16 @@ import { SurveyService } from './survey.service';
 
 @Controller('survey')
 export class SurveyController {
-    constructor(private readonly surveyService: SurveyService) {}
+    constructor(private readonly surveyService: SurveyService) { }
 
     @Post()
     createSurvey(@Body() body: any) {
         return this.surveyService.createSurvey(body);
+    }
+
+    @Get('all-bg')
+    getAllBackgrounds() {
+        return this.surveyService.getAllBackgrounds();
     }
 
     @Get()
