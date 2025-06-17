@@ -1,0 +1,11 @@
+{
+  "BackgroundGradient1Color": "#ffffff",
+  "BackgroundGradient2Color": "#f0f0f0",
+  "TitleColor": "#2f2f2f",
+  "ContentColor": "#444444",
+  "ButtonBackgroundColor": "linear-gradient(to right, #F27186, #F83D6E)",
+  "ButtonContentColor": "#FEC347",
+  "Password": "123456",
+  "Brightness": 100,
+  "DefaultBackgroundImageId": 6
+}
