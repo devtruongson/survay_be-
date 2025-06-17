@@ -104,4 +104,43 @@ export class SurveyService {
             statusCode: HttpStatus.OK,
         });
     }
+
+    private async validateConfigJson(data: any) {
+        const schemaPath = path.join(process.cwd(), 'src', 'utils', 'configSchema.json');
+        const schemaContent = await fs.readFile(schemaPath, 'utf8');
+        const schema = JSON.parse(schemaContent);
+        const config = data?.ConfigJson;
+        if (!config) {
+            return sendResponse({
+                data: null,
+                message: 'ConfigJson is required',
+                statusCode: HttpStatus.BAD_REQUEST,
+            });
+        }
+        for (const key of Object.keys(schema)) {
+            if (!(key in config)) {
+                return sendResponse({
+                    data: null,
+                    message: `Missing field ${key}`,
+                    statusCode: HttpStatus.BAD_REQUEST,
+                });
+            }
+        }
+        if (typeof config.Brightness === 'number') {
+            if (config.Brightness < 0 || config.Brightness > 100) {
+                return sendResponse({
+                    data: null,
+                    message: 'Brightness must be between 0 and 100',
+                    statusCode: HttpStatus.BAD_REQUEST,
+                });
+            }
+        }
+        return null;
+    }
+
+    async saveSurveyWithValidation(data: any) {
+        const error = await this.validateConfigJson(data);
+        if (error) return error;
+        return this.saveSurveyToFile(data);
+    }
 }

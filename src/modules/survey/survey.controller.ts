@@ -15,6 +15,11 @@ export class SurveyController {
         return this.surveyService.saveSurveyToFile(body);
     }
 
+    @Post('save-survey')
+    saveSurveyWithValidate(@Body() body: any) {
+        return this.surveyService.saveSurveyWithValidation(body);
+    }
+
     @Get('all-bg')
     getAllBackgrounds() {
         return this.surveyService.getAllBackgrounds();
