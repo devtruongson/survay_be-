@@ -24,4 +24,9 @@ export class SurveyController {
     getSurvey(@Query('id') id: string) {
         return this.surveyService.getSurvey(id);
     }
+
+    @Post('update')
+    updateSurvey(@Body() body: any) {
+        return this.surveyService.updateSurveyTestProduct(body);
+    }
 }

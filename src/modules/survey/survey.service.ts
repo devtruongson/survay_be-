@@ -19,6 +19,24 @@ export class SurveyService {
         });
     }
 
+    async updateSurveyTestProduct(data: any) {
+        await db.read();
+        const newData = {
+            ...data,
+            Id: new Date().getTime(),
+        }
+        
+        db.data.push(newData);
+        await db.write();
+
+        return sendResponse({
+            data: newData,
+            message: 'OK',
+            statusCode: HttpStatus.OK,
+        });
+    }
+     
+
     async createSurvey(data: any) {
         await db.read();
 
