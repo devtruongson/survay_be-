@@ -1,6 +1,8 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { sendResponse } from 'src/helpers/response';
 import { db, dbBackground, initDB } from 'src/utils/db';
+import * as path from 'path';
+import { promises as fs } from 'fs';
 
 @Injectable()
 export class SurveyService {
@@ -32,7 +34,7 @@ export class SurveyService {
 
         if (existingSurvey) {
             const newData = db.data.map((survey) => {
-                if ((survey as any).Id === Id) {
+                if ((survey).Id === Id) {
                     return data;
                 }
                 return survey;
@@ -80,6 +82,24 @@ export class SurveyService {
         }
         return sendResponse({
             data: survey,
+            message: 'OK',
+            statusCode: HttpStatus.OK,
+        });
+    }
+
+    async saveSurveyToFile(data: any) {
+        const filePath = path.join(process.cwd(), 'src', 'utils', 'savedSurveys.json');
+        let surveys: any[] = [];
+        try {
+            const content = await fs.readFile(filePath, 'utf8');
+            surveys = JSON.parse(content);
+        } catch {
+            surveys = [];
+        }
+        surveys.push(data);
+        await fs.writeFile(filePath, JSON.stringify(surveys, null, 2));
+        return sendResponse({
+            data,
             message: 'OK',
             statusCode: HttpStatus.OK,
         });
