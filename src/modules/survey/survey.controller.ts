@@ -3,7 +3,7 @@ import { SurveyService } from './survey.service';
 
 @Controller('survey')
 export class SurveyController {
-    constructor(private readonly surveyService: SurveyService) { }
+    constructor(private readonly surveyService: SurveyService) {}
 
     @Post()
     createSurvey(@Body() body: any) {
@@ -28,5 +28,10 @@ export class SurveyController {
     @Post('update')
     updateSurvey(@Body() body: any) {
         return this.surveyService.updateSurveyTestProduct(body);
+    }
+
+    @Get('/slide')
+    getSlide(@Query('id') id: string) {
+        return this.surveyService.getSurvey(id);
     }
 }
