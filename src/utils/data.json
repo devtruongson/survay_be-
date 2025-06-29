@@ -12,6 +12,7 @@
         "SecurityModeId": 2,
         "BackgroundImageBase64": "",
         "IsSuccess": true,
+        "Version": 1,
         "ConfigJson": {
             "Background": "image",
             "IsUseBackgroundImageBase64": true,
@@ -19,8 +20,8 @@
             "BackgroundGradient2Color": "#de1717",
             "TitleColor": "#2f2f2f",
             "ContentColor": "#444444",
-            "ButtonBackgroundColor": "linear-gradient(to right, #F52828, #E84F4F)",
-            "ButtonContentColor": "#FEC347",
+            "ButtonBackgroundColor": "#dd6422",
+            "ButtonContentColor": "#58df8c",
             "Password": "123456",
             "Brightness": 100,
             "DefaultBackgroundImageId": 10,
@@ -35,6 +36,7 @@
                 "TimeLimit": 2,
                 "IsVoice": false,
                 "Order": 1,
+                "MainImageUrl": "https://deviet.vn/wp-content/uploads/2019/04/vuong-quoc-anh.jpg",
                 "ConfigJson": {
                     "JumpLogics": [
                         {
@@ -55,12 +57,14 @@
                     {
                         "Id": 1,
                         "Content": "a",
-                        "Order": 1
+                        "Order": 1,
+                        "MainImageUrl": "https://deviet.vn/wp-content/uploads/2019/04/vuong-quoc-anh.jpg"
                     },
                     {
                         "Id": 2,
                         "Content": "b",
-                        "Order": 2
+                        "Order": 2,
+                        "MainImageUrl": "https://deviet.vn/wp-content/uploads/2019/04/vuong-quoc-anh.jpg"
                     },
                     {
                         "Id": 3,
@@ -82,12 +86,14 @@
                     {
                         "Id": 1,
                         "Content": "a",
-                        "Order": 1
+                        "Order": 1,
+                        "MainImageUrl": "https://deviet.vn/wp-content/uploads/2019/04/vuong-quoc-anh.jpg"
                     },
                     {
                         "Id": 2,
                         "Content": "b",
-                        "Order": 2
+                        "Order": 2,
+                        "MainImageUrl": "https://deviet.vn/wp-content/uploads/2019/04/vuong-quoc-anh.jpg"
                     }
                 ]
             },
@@ -150,22 +156,26 @@
                     {
                         "Id": 1,
                         "Content": "a",
-                        "Order": 1
+                        "Order": 1,
+                        "MainImageUrl": "https://deviet.vn/wp-content/uploads/2019/04/vuong-quoc-anh.jpg"
                     },
                     {
                         "Id": 2,
                         "Content": "b",
-                        "Order": 2
+                        "Order": 2,
+                        "MainImageUrl": "https://deviet.vn/wp-content/uploads/2019/04/vuong-quoc-anh.jpg"
                     },
                     {
                         "Id": 3,
                         "Content": "c",
-                        "Order": 3
+                        "Order": 3,
+                        "MainImageUrl": "https://deviet.vn/wp-content/uploads/2019/04/vuong-quoc-anh.jpg"
                     },
                     {
                         "Id": 4,
                         "Content": "d",
-                        "Order": 4
+                        "Order": 4,
+                        "MainImageUrl": "https://deviet.vn/wp-content/uploads/2019/04/vuong-quoc-anh.jpg"
                     }
                 ]
             },
